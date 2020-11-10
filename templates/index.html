@@ -31,7 +31,9 @@
 
 			<ul  id="ingredientsList">
 				{% for ing in ingredients %}
-					<li> {{ ing.ingredient}} </li>
+					<li>  {{ ing.ingredient}} 
+						<a href="/update/{{ing.id}}" role="button" class="btn btn-outline-secondary btn-sm"> Update </a> <a href="/delete/{{ing.id}}" role="button" class="btn btn-outline-danger btn-sm"> Delete </a>
+					</li>		
 				{% endfor %}
 			</ul>	
 			

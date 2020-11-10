@@ -57,7 +57,28 @@ def index():
         ingredients = Ingredients.query.order_by(Ingredients.id)
         return render_template('index.html',ingredients=ingredients)
 
+@app.route('/update/<int:id>',methods=['GET', 'POST'])
+def update(id):
+    ing_to_update = Ingredients.query.get_or_404(id)
+    if request.method == 'POST':
+        ing_to_update.ingredient = request.form['ing']
+        try:
+            db.session.commit()
+            return redirect("/")
+        except:
+            return "There was an error updating"
+    else:
+        return render_template('update.html', ing_to_update=ing_to_update)
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    ing_to_delete = Ingredients.query.get_or_404(id)
+    try:
+        db.session.delete(ing_to_delete)
+        db.session.commit()
+        return redirect("/")
+    except:
+        return "There was a problem deleting that friend"
 
 
 

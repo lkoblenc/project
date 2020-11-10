@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+{% block title %}Flasky{% endblock %}
+
+
+
+{% block page_content %}
+
+<main>
+
+	<h1> Update Friend.. </h1>
+	<form action='/update/{{ing_to_update.id}}' method="post">
+		<input type="text" placeholder="Ingredient" value="{{ing_to_update.ingredient}}" name='ing'>
+		<input type="submit" name="Update Ingredient" class="btn btn-secondary">
+	</form>
+
+</main>
+
+{% endblock %}
+
