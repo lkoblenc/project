@@ -9,7 +9,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 application = app
-app.config['SECRET_KEY'] = 'hard to guess string'
+app.config['SECRET_KEY'] = 'thingxThingYthingZ'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ingredients.db'
 
 moment = Moment(app)
