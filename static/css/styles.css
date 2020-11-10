@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+/*Overall Styles*/
+
+html {
+
+  scroll-behavior: smooth;
+
+}
+main {
+width: 100%;
+}
+body {
+
+	
+	background-color: #f7e0ac;
+
+	font-family: "Roboto", sans-serif;
+
+}
+
+
+
+/* Side by side styles*/
+
+.side-by-side {
+
+	display: flex;
+
+	justify-content: space-around;
+
+	align-items: center;
+
+}
+
+.pie {
+
+	margin-right: 20px;
+
+}
+
+header {
+
+	display: flex;
+
+	justify-content: space-between;
+
+	align-items: center;
+
+	margin-bottom: 20px;
+
+}
+
+.side-by-side ul {
+
+	list-style-type: none;
+
+}
+
+.side-by-side li {
+
+	border: 1px solid black;
+
+	padding: 7px;
+
+}
+
+/* Ingredient Table Style */
+
+table, tr, td {
+
+	border: 2px solid black;
+
+	border-collapse: collapse;
+
+}
+
+td {
+
+	padding: 7px;
+
+}
+
+a {
+
+	text-decoration: none;
+
+}
+
+
+
+/* Main styles*/
+
+.apple {
+
+	float: right;
+
+	width: 300px;
+
+	margin: 20px 0px 20px 20px;
+
+}
+
+.questions section {
+
+	margin-bottom: 30px;
+
+}
+
+/*footer */
+
+footer {
+
+	text-align: right;
+
+	padding: 30px;
+
+}
+
+footer a {
+
+	color: #d75915;
+
+}
+
+footer a:hover {
+
+	color: #c39367;
+
+}
