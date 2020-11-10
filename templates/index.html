@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Banana | Milkshakes!{% endblock %}
+
+{% block page_content %}
+<div class="container">
+
+<div>
+
+	  	<h2>How to get Started!</h2>
+
+</div>
+
+<div>
+	  	<img src="{{ url_for('static', filename='images/started.jpg') }}" alt="Starting Ingredients">
+	  	
+</div>
+
+
+<div class="conainer">
+	<ul> 
+<!-- For loop logic of jinja template -->
+{% for i in ingredient %}
+
+{% set update_url= url_for('edit_page', ingredientId=i.id)%}
+{% set delete_url= url_for('delete', ingredientId=i.id)%}
+  
+    <li>{{i.ingredient}} <button><a href="{{update_url}}">Edit</a></button> <button> <a href='{{delete_url}}'>Delete</a></button></li>
+
+{%endfor%} 
+	
+	</ul> 
+
+	 	{{ wtf.quick_form(form) }}
+
+</div>
+</div>
+<hr>
+<div class="container">
+
+	<div>
+		<h2>Now You're Done!</h2>
+	</div>
+
+	<div>
+	<img src="{{ url_for('static', filename='images/done.jpg') }}" alt="Finished Product">
+</div> 
+	<div>
+	  	
+	  	<ol>
+	  		<li>Once your ingredients are in the blender mix on the high setting.</li>
+	  		<li>Keeping mixing until the shake is at the desired consistency of liquidity or softness.</li>
+	  		<li>Then drink it up!!!</li>
+	  	</ol>
+	  
+</div>
+
+</div>
+
+{% endblock %}
