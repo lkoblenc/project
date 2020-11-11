@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for
+from flask_material import Material 
 from flask_moment import Moment
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -8,6 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 app = Flask(__name__)
+Material(app)
 application = app
 app.config['SECRET_KEY'] = 'thingxThingYthingZ'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ingredients.db'
