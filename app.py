@@ -30,21 +30,21 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/leo', methods=['GET', 'POST'])
 def leo():
     return render_template('leo.html')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/jack', methods=['GET', 'POST'])
 def jack():
     return render_template('jack.html')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/jaafar', methods=['GET', 'POST'])
 def jaafar():
     return render_template('jaafar.html')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     return render_template('contact.html')
