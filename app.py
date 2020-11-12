@@ -11,13 +11,19 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 application = app
 app.config['SECRET_KEY'] = 'thingxThingYthingZ'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ingredients.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contact.db'
 
 moment = Moment(app)
 material = Material(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+
+class Contact(db.model):
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(200), nullable=False, unique=False)
+	email = db.Column(db.String(200), nullable=False, unique=True)
+	phone = db.Column(db.String(200), nullable=False, unique=True)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
