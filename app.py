@@ -9,12 +9,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 app = Flask(__name__)
-Material(app)
 application = app
 app.config['SECRET_KEY'] = 'thingxThingYthingZ'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ingredients.db'
 
 moment = Moment(app)
+material = Material(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -22,3 +22,23 @@ migrate = Migrate(app, db)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
+
+
+@app.route('/', methods=['GET', 'POST'])
+def leo():
+    return render_template('leo.html')
+
+
+@app.route('/', methods=['GET', 'POST'])
+def jack():
+    return render_template('jack.html')
+
+
+@app.route('/', methods=['GET', 'POST'])
+def jaafar():
+    return render_template('jaafar.html')
+
+
+@app.route('/', methods=['GET', 'POST'])
+def contact():
+    return render_template('contact.html')
