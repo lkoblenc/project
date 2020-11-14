@@ -1,0 +1,9 @@
+.navbar {
+  background-color: #007bff;
+  color: white;
+  line-height: 50px;
+  background-image: none;
+}
+nav .navbar-text {
+ color: white;
+}
