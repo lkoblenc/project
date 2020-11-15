@@ -3,39 +3,43 @@
 {% block content %}
 <div class="bg-light"> 
 	<main class="container">
-		<div class="container">
-			<div class="row">
-				<div class="bg-layout col">
-					<header >
+		<aside class="row .row-eq-height">
+			<div class="bg-layout col-md-8">
+				<header class="row .row-eq-height">
+					<img src="{{url_for('static',filename='images/jack.png')}}" class='col-md-4'>
+					<div class='col-md-8'>
 						<h1> Jack Mandell </h1>
 						<h2 class="title"> Math and Computer Science Student at the University of Rochester </h2>
-						<img src="{{url_for('static',filename='images/jack.png')}}">
-					</header>
-				</div>
-				<div class="bg-layout col">
-					<section class="experience">
-						<h3> Teaching Assistant for Honors Calculus I </h3>
+					</div>	
+					
+				</header>
+			</div>	
+			<div class="bg-layout col-md-4">
+				<section class="experience">
+					<h2> Experience </h2>
+					<h3> Teaching Assistant for Honors Calculus I </h3>
+					<h3> Art Instructor  </h3>
+				</section>
+			</div>			
+		</aside>
 
-						<h3> Art Instructor  </h3>
-					</section>
-				</div>
-			</div>
-		</div>
-		<article class="education">
-			<div class="bg-layout">
+		<article class="education row .row-eq-height">
+			<div class="bg-layout col-md-8">
 				<h2> Degrees </h2>
 			
 				<section class="degrees">
 					<ul>
-						<li> 
-							<ul> 
+						<li class="li-layout row"> 
+							<img src="{{url_for('static',filename='images/ur.png')}}" class="col-md-2">
+							<ul class="col-md-10"> 
 								<li> University of Rochester </li>
 								<li> Bachelor of Science - BS, Mathematics </li>
 								<li> 2019 - 2023 </li>
 						 	</ul>
 						</li>
-						<li>
-							 <ul>  
+						<li class="li-layout row">
+							 <img src="{{url_for('static',filename='images/ur.png')}}" class="col-md-2">
+							 <ul class="col-md-10">  
 							 	<li> University of Rochester </li>
 							 	<li> Bachelor of Arts - BA, Computer Science </li>
 							 	<li> 2019 - 2023 </li>
@@ -45,7 +49,7 @@
 			
 				</section>
 			</div>	
-			<div class="bg-layout">
+			<div class="bg-layout col-md-4">
 				<h2> Courses </h2>
 			
 				<section class="courses">
@@ -59,10 +63,9 @@
 					</ul>	
 				</section>
 			</div>
-
 		</article>
-		<div class="bg-layout">	
-			<section class="projects">
+		<div class="bg-layout row">	
+			<section class="projects col-md-12">
 			<h2> Projects </h2>
 				<h3> Street Mapping of New York State </h3>
 				<p> Using Java, I created a graph data structure to represent the intersections and roads of New York State. After constructing the graph, the coordinates of the intersections were used to create a map that was displayed to the user. Dijkstra's Algorithm was implemented to find the shortest route from a given intersection to all other intersections, and Kruskal's Algorithm was implemented to find the minimum weight spanning tree given an intersection.  </p>
@@ -80,6 +83,6 @@
 		</div>	
 	</main>
 </div>
-
+ 
 
 {% endblock %}

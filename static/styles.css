@@ -12,12 +12,28 @@
  color: grey !important;
 }
 .bg-light {
-	background-color: #f8f9fa;
+	background-color: #f3f2ef;
 }
 
 .bg-layout {
 	background-color: white;
-	padding: 10px;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 10px;
+	padding: 15px;
+}
+main {
+	color: #535353;
+}
+.degrees ul, .courses ul {
+	list-style-type: none;
+}
+/*.li-layout {
+	display: flex;
+}*/
+.degree {
+	margin-left: 10px;
+}
+.degrees ul ul li:nth-of-type(1) {
+	font-weight: bold;
 }
