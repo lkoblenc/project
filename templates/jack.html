@@ -3,69 +3,82 @@
 {% block content %}
 <div class="bg-light"> 
 	<main class="container">
+		<div class="container">
+			<div class="row">
+				<div class="bg-layout col">
+					<header >
+						<h1> Jack Mandell </h1>
+						<h2 class="title"> Math and Computer Science Student at the University of Rochester </h2>
+						<img src="{{url_for('static',filename='images/jack.png')}}">
+					</header>
+				</div>
+				<div class="bg-layout col">
+					<section class="experience">
+						<h3> Teaching Assistant for Honors Calculus I </h3>
 
-		<header>
-			<h1> Jack Mandell </h1>
-			<h2 class="title"> Math and Computer Science Student at the University of Rochester </h2>
-			<img src="{{url_for('static',filename='images/jack.png')}}">
-		</header>
-
-		<section class="experience">
-			<h3> Teaching Assistant for Honors Calculus I </h3>
-
-			<h3> Art Instructor  </h3>
-
+						<h3> Art Instructor  </h3>
+					</section>
+				</div>
+			</div>
+		</div>
 		<article class="education">
-			<h2> Degrees </h2>
-			<section class="degrees">
-				<ul>
-					<li> 
-						<ul> 
-							<li> University of Rochester </li>
-							<li> Bachelor of Science - BS, Mathematics </li>
-							<li> 2019 - 2023 </li>
-					 	</ul>
-					</li>
-					<li>
-						 <ul>  
-						 	<li> University of Rochester </li>
-						 	<li> Bachelor of Arts - BA, Computer Science </li>
-						 	<li> 2019 - 2023 </li>
-						 </ul>
-					</li>
-				</ul>
-				
-			</section>
-			<h2> Courses </h2>
-			<section class="courses">
-				<ul>
-					<li> Advanced Web Development </li>
-					<li> Data Structures & Algorithms </li>
-					<li> Web Application Programming </li>
-					<li> Discrete Mathematics </li>
-					<li> Honors Calculus I-III </li>
-					<li> Intro to Probability </li>
-				</ul>	
-			</section>
+			<div class="bg-layout">
+				<h2> Degrees </h2>
+			
+				<section class="degrees">
+					<ul>
+						<li> 
+							<ul> 
+								<li> University of Rochester </li>
+								<li> Bachelor of Science - BS, Mathematics </li>
+								<li> 2019 - 2023 </li>
+						 	</ul>
+						</li>
+						<li>
+							 <ul>  
+							 	<li> University of Rochester </li>
+							 	<li> Bachelor of Arts - BA, Computer Science </li>
+							 	<li> 2019 - 2023 </li>
+							 </ul>
+						</li>
+					</ul>
+			
+				</section>
+			</div>	
+			<div class="bg-layout">
+				<h2> Courses </h2>
+			
+				<section class="courses">
+					<ul>
+						<li> Advanced Web Development </li>
+						<li> Data Structures & Algorithms </li>
+						<li> Web Application Programming </li>
+						<li> Discrete Mathematics </li>
+						<li> Honors Calculus I-III </li>
+						<li> Intro to Probability </li>
+					</ul>	
+				</section>
+			</div>
 
 
 		</article>
+		<div class="bg-layout">	
+			<section class="projects">
+			<h2> Projects </h2>
+				<h3> Street Mapping of New York State </h3>
+				<p> Using Java, I created a graph data structure to represent the intersections and roads of New York State. After constructing the graph, the coordinates of the intersections were used to create a map that was displayed to the user. Dijkstra's Algorithm was implemented to find the shortest route from a given intersection to all other intersections, and Kruskal's Algorithm was implemented to find the minimum weight spanning tree given an intersection.  </p>
 
-		<section class="projects">
-		<h2> Projects </h2>
-			<h3> Street Mapping of New York State </h3>
-			<p> Using Java, I created a graph data structure to represent the intersections and roads of New York State. After constructing the graph, the coordinates of the intersections were used to create a map that was displayed to the user. Dijkstra's Algorithm was implemented to find the shortest route from a given intersection to all other intersections, and Kruskal's Algorithm was implemented to find the minimum weight spanning tree given an intersection.  </p>
+				<h3> Connect Four Application  </h3>
+				<p>  I used Java, JavaFX, and Scene Builder to design the classic game of connect four. Two players take turns placing tokens into columns. The application also allows the users to change the dimensions of the playing board, as well as the minimum amount of tokens in a row it takes to win a game.  </p>
 
-			<h3> Connect Four Application  </h3>
-			<p>  I used Java, JavaFX, and Scene Builder to design the classic game of connect four. Two players take turns placing tokens into columns. The application also allows the users to change the dimensions of the playing board, as well as the minimum amount of tokens in a row it takes to win a game.  </p>
+				<h3> </h3>
+				<p> </p>
 
-			<h3> </h3>
-			<p> </p>
-
-			<h3> Website with custom content management system.  </h3>
-			<p> The website was a collection of student's about-me pages utilizing MySQL, HTML, PHP, CSS.  The website had a custom content management system (CMS) and login interface, and the website allowed users with a valid username and password to create, edit, and delete student pages on the website.  </p>
-			
-		</section>
+				<h3> Website with custom content management system.  </h3>
+				<p> The website was a collection of student's about-me pages utilizing MySQL, HTML, PHP, CSS.  The website had a custom content management system (CMS) and login interface, and the website allowed users with a valid username and password to create, edit, and delete student pages on the website.  </p>
+				
+			</section>
+		</div>	
 	</main>
 </div>
 
