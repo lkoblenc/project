@@ -3,28 +3,22 @@
 {% block content %}
 <div class="bg-light"> 
 	<main class="container">
-		<aside class="row .row-eq-height">
-			<div class="bg-layout col-md-8">
+		<aside class="row col-container">
+			<div class="bg-layout col-md-12">
 				<header class="row .row-eq-height">
-					<img src="{{url_for('static',filename='images/jack.png')}}" class='col-md-4'>
-					<div class='col-md-8'>
+					<img src="{{url_for('static',filename='images/jack.png')}}" class='col-md-3'>
+					<div class='col-md-9'>
 						<h1> Jack Mandell </h1>
 						<h2 class="title"> Math and Computer Science Student at the University of Rochester </h2>
 					</div>	
 					
 				</header>
 			</div>	
-			<div class="bg-layout col-md-4">
-				<section class="experience">
-					<h2> Experience </h2>
-					<h3> Teaching Assistant for Honors Calculus I </h3>
-					<h3> Art Instructor  </h3>
-				</section>
-			</div>			
+					
 		</aside>
 
-		<article class="education row .row-eq-height">
-			<div class="bg-layout col-md-8">
+		<article class="education row col-container">
+			<div class="bg-layout col-md-4">
 				<h2> Degrees </h2>
 			
 				<section class="degrees">
@@ -63,8 +57,15 @@
 					</ul>	
 				</section>
 			</div>
+			<div class="bg-layout col-md-4">
+				<section class="experience">
+					<h2> Experience </h2>
+					<h3> Teaching Assistant for Honors Calculus I </h3>
+					<h3> Art Instructor  </h3>
+				</section>
+			</div>	
 		</article>
-		<div class="bg-layout row">	
+		<div class="bg-layout row ">	
 			<section class="projects col-md-12">
 			<h2> Projects </h2>
 				<h3> Street Mapping of New York State </h3>
