@@ -47,4 +47,4 @@ def jaafar():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html')
+	return render_template('contact.html')
