@@ -2,4 +2,55 @@
 
 {% block content %}
 
+
+<div class="bg-light">
+	<main class="container">
+		<div class="row">
+			<div class ="bg-layout col">
+				<header>
+					<h1> Contact List </h1>
+					<!-- if user user signed in, they will be greeted with a message-->
+					{% if condition == True %}
+						<p>Hello {{contact.name}}! Find your information in the list below to edit or delete it.</p>
+					{% else %} <!-- if not signed in, a different message -->
+						<p><a href = "">Sign up</a> to add your contact information to our list, or <a href = "">sign in</a> to edit or delete your already created information.</p>
+					{% endif %}
+
+				</header>
+			</div>
+			<div class ="bg-layout col">
+				<table>
+					<tr>
+						<th>Contact Name</th>
+						<th>Email Address</th>
+						<th>Phone Number</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>Placeholder</td>
+						<td>Placeholder</td>
+						<td>Placeholder</td>
+					</tr>
+					{% for contact in contacts %}
+					<tr>
+						<td>{{contact.name}}</td>
+						<td>{{contact.email}}</td>
+						<td>{{contact.phone}}</td>
+						<!-- if user signed in, they can also edit and delete their contact info -->
+						{% if condition == True %}
+							<td><a href="">Edit Contact Information</a></td>
+							<td><a href="">Delete Contact Information</a></td>
+						{% endif %}
+
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</main>
+</div>
+
+
+
 {% endblock %}
