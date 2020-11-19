@@ -23,7 +23,11 @@ class Contact(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(200), nullable=False, unique=False)
 	email = db.Column(db.String(200), nullable=False, unique=True)
-	phone = db.Column(db.String(200), nullable=False, unique=True)
+
+class ContactForm(FlaskForm):
+	name = StringField('Enter your name', validators=[DataRequired()])
+	email = StringField('Enter your email', validators=[DataRequired()])
+	submit = SubmitField('Submit')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -47,4 +51,18 @@ def jaafar():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+	#contact = Contact.query.all()
+	#contactform = ContactForm()
+	#if form.validate_on_submit():
+	#	names = form.name.data
+	#	new_name = ContactForm(name = names)
+	#	emails = form.email.data
+	#	new_email = ContactForm(email = emails)
+	#	db.session.add(new_name)
+	#	db.session.commit
+	#	db.session.add(new_email)
+	#	db.session.commit()
+	#	contact = ContactForm.query.all()
+	#	form.name.data = ''
+	#	form.email.data = ''
 	return render_template('contact.html')
