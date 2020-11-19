@@ -3,7 +3,8 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Email
+from wtforms.fields.html5 import EmailField
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -26,7 +27,7 @@ class Contact(db.Model):
 
 class ContactForm(FlaskForm):
 	name = StringField('Enter your name', validators=[DataRequired()])
-	email = StringField('Enter your email', validators=[DataRequired()])
+	email = EmailField('Email address', [DataRequired(), Email()])
 	submit = SubmitField('Submit')
 
 @app.route('/', methods=['GET', 'POST'])
@@ -51,18 +52,19 @@ def jaafar():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
-	#contact = Contact.query.all()
-	#contactform = ContactForm()
-	#if form.validate_on_submit():
-	#	names = form.name.data
-	#	new_name = ContactForm(name = names)
-	#	emails = form.email.data
-	#	new_email = ContactForm(email = emails)
-	#	db.session.add(new_name)
-	#	db.session.commit
-	#	db.session.add(new_email)
-	#	db.session.commit()
-	#	contact = ContactForm.query.all()
-	#	form.name.data = ''
-	#	form.email.data = ''
-	return render_template('contact.html')
+	contact = Contact.query.all()
+	form = ContactForm()
+	contacts = Contact().query.all()
+	if form.validate_on_submit():
+		inputtedname = form.name.data
+		inputtedemail = form.email.data
+		new_contact = Contact(name = inputtedname, email = inputtedemail)
+		if len(Contact().query.filter(Contact.email==inputtedemail).all()) == 0:
+			db.session.add(new_contact)
+			db.session.commit()
+		else:
+			print("Email already exists")
+		contacts = Contact().query.all()
+		form.name.data = ''
+		form.email.data = ''
+	return render_template('contact.html', form = form, contacts = contacts)
