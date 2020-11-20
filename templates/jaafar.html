@@ -3,77 +3,69 @@
 {% block content %}
 	<div class="bg-light">
 		<main class = "container">
-			<div class = "container">
-				<div class = "row">
-					<div class = "bg-layout col">
-						<header>
-							<h1> Jaafar Hadab </h1>
-							<h2 class="title"> Mechanical Engineering Student at the University of Rochester</h2>
-							<img src="{{url_for('static',filename='images/jaafar.jpg')}}">
+			<div class = "row display-flex">
+				<div class = "bg-layout col-lg-12 col-md-12 col-xs-12">
+						<header class="row">
+							<img src="{{url_for('static',filename='images/jaafar.jpg')}}" class='col-xs-3 col-md-3 col-lg-3'>
+							<div class='col-xs-9 col-md-9 col-lg-9'>
+								<h1> Jaafar Hadab </h1>
+								<h2 class="title"> Mechanical Engineering Student at the University of Rochester</h2>
+							</div>
+							
 						</header>
-					</div>
-					<div class="bg-layout col">
-						<section class = "experience">
-							<h3> DAC FEA Research at the University of Rochester Dias Laboratory</h3>
-							<h3> Suspension Lead for the University of Rochester Baja SAE team</h3>
-						</section>
-					</div>
 				</div>
-			</div>
-			<article class = "education">
-				<div class = "bg-layout">
+				<div class="bg-layout col-lg-4 col-md-6 col-xs-12">
 					<h2> Degrees </h2>
-
 					<section class="degrees">
 						<ul>
-							<li>
-								<ul>
+							<li class="li-layout row">
+								<img src="{{url_for('static',filename='images/ur.png')}}" class="col-md-2">
+								<ul class="col-md-10">
 									<li> University of Rochester </li>
 									<li> Bachelor of Science - Mechanical Engineering </li>
 									<li> 2017 - 2021 </li>
 								</ul>
 							</li>
-							<li>
-								<ul>
+							<li class="li-layout row">
+								<img src="{{url_for('static',filename='images/ur.png')}}" class="col-md-2">
+								<ul class="col-md-10">
 									<li> University of Rochester </li>
 									<li> Minor - Computer Science </li>
 									<li> 2017 - 2021 </li>
 								</ul>
 							</li>
-							<li>
-								<ul>
-									<li> University of Rochester </li>
-									<li> Minor - Psychology as a Social Science </li>
-									<li> 2017 - 2021 </li>
-								</ul>
-							</li>
-							<li>
-								<ul>
-									<li> Udacity </li>
-									<li> Nanodegree - AI Programming with Python </li>
-									<li> 2020 </li>
-								</ul>
-							</li>
 						</ul>
 					</section>
 				</div>
-				<div class="bg-layout">
-				<h2> Courses </h2>
-			
-				<section class="courses">
-					<ul>
-						<li> Mechanical Design </li>
-						<li> Heat and Power </li>
-						<li> Fluid Dynamics </li>
-						<li> Materials Science </li>
-						<li> Data Structures & Algorithms </li>
-						<li> Web Application Programming </li>
-					</ul>	
-				</section>
-			</div>
-			</article>
 
-			<div class="bg-layout">	
+				<div class="bg-layout col-lg-4 col-md-6 col-xs-12">
+					<h2> Courses </h2>
+					<section class="courses">
+						<p>Mechanical Design  •  Heat and Power  •
+							 Fluid Dynamics  •  Materials Science  •  Data Structures & Algorithms  •  Web Application Programming 
+						</p>
+						<!-- <ul>
+							<li> Mechanical Design </li>
+							<li> Heat and Power </li>
+							<li> Fluid Dynamics </li>
+							<li> Materials Science </li>
+							<li> Data Structures & Algorithms </li>
+							<li> Web Application Programming </li>
+						</ul>	 -->
+					</section>
+				</div>
+
+				<div class="bg-layout col-lg-4 col-md-12 col-xs-12">
+					<section class = "experience">
+						<h2> Experience </h2>
+							<h3> DAC FEA Research at the University of Rochester Dias Laboratory</h3>
+							<h3> Suspension Lead for the University of Rochester Baja SAE team</h3>
+					</section>
+				</div>
+				
+			
+
+			<div class="bg-layout col-lg-12 col-md-12 col-xs-12 ">	
 			<section class="projects">
 			<h2> Projects </h2>
 				<h3> Design and Fabrication of an Air Engine Assembly </h3>
@@ -86,6 +78,7 @@
 				<p> The website was a collection of student's about-me pages utilizing MySQL, HTML, PHP, CSS.  The website had a custom content management system (CMS) and login interface, and the website allowed users with a valid username and password to create, edit, and delete student pages on the website.  </p>
 				
 			</section>
+			</div>
 			</div>
 		</main>
 	</div>
