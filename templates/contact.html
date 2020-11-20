@@ -6,9 +6,8 @@
 
 <div class="bg-light">
 	<main class="container">
-		<div class="row">
-			<div class ="bg-layout col">
-				<header>
+		<div class="row display-flex">
+			<div class ="bg-layout col-lg-12 col-md-12 col-xs-12">
 					<h1> Contact List </h1>
 					<!-- if user user signed in, they will be greeted with a message-->
 					{% if condition == True %}
@@ -16,25 +15,19 @@
 					{% else %} <!-- if not signed in, a different message -->
 						<p><a href = "">Sign up</a> to add your contact information to our list, or <a href = "">sign in</a> to edit or delete your already created information.</p>
 					{% endif %}
-
-				</header>
 			</div>
-			<div class ="bg-layout col">
+			<div class ="bg-layout col-lg-12 col-md-12 col-xs-12 ">
 				<table>
 					<tr>
-						<th>Contact Name</th>
-						<th>Email Address</th>
+						<th><h2>Contact Name</h2></th>
+						<th><h2>Email Address</h2></th>
 						<th></th>
 						<th></th>
-					</tr>
-					<tr>
-						<td>Placeholder</td>
-						<td>Placeholder</td>
 					</tr>
 					{% for contact in contacts %}
 					<tr>
-						<td>{{contact.name}}</td>
-						<td>{{contact.email}}</td>
+						<td><h3>{{contact.name}}</h3></td>
+						<td><h3>{{contact.email}}</h3></td>
 						<!-- if user signed in, they can also edit and delete their contact info -->
 						{% if condition == True %}
 							<td><a href="">Edit Contact Information</a></td>
@@ -44,7 +37,7 @@
 					</tr>
 					{% endfor %}
 				</table>
-			{{ wtf.quick_form(form) }}
+				{{ wtf.quick_form(form) }}
 			</div>
 		</div>
 	</main>
