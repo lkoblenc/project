@@ -16,16 +16,13 @@
 .nav.navbar-nav a:hover {
  color: grey !important;
 }
-.bg-light {
+body {
 	background-color: #f3f2ef;
 }
 
 .bg-layout {
 	background-color: white;
 	border-radius: 10px;
-}
-main {
-	color: #535353;
 }
 .degrees ul, .courses ul {
 	list-style-type: none;
