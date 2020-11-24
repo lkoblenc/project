@@ -6,6 +6,11 @@
 }
 .nav.navbar-nav li a, .navbar-brand {
    color: white !important;
+
+ }
+ .nav.navbar-nav li:nth-of-type(1) a {
+   color: white !important;
+   font-size: 18px;
  }
 
 .nav.navbar-nav a:hover {
