@@ -30,25 +30,26 @@ class ContactForm(FlaskForm):
 	email = EmailField('Email address', [DataRequired(), Email()])
 	submit = SubmitField('Submit')
 
+class UpdateForm(FlaskForm):
+    name = StringField('Edit the name', validators=[DataRequired()])
+    email = EmailField('Email address', [DataRequired(), Email()])
+    submit = SubmitField('Submit')
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
-
 
 @app.route('/leo', methods=['GET', 'POST'])
 def leo():
     return render_template('leo.html')
 
-
 @app.route('/jack', methods=['GET', 'POST'])
 def jack():
     return render_template('jack.html')
 
-
 @app.route('/jaafar', methods=['GET', 'POST'])
 def jaafar():
     return render_template('jaafar.html')
-
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -68,3 +69,28 @@ def contact():
 		form.name.data = ''
 		form.email.data = ''
 	return render_template('contact.html', form = form, contacts = contacts)
+
+#@app.route('/delete/<int:contactId>', methods=['GET', 'POST'])
+#def delete(contactId):
+	#name = Contact.query.filter_by(id=nameId).first()
+	#email = Contact.query.filter_by(id=emailId).first()
+    #db.session.delete(name)
+    #db.session.delete(email)
+    #db.session.commit()
+    #return redirect(url_for('index'))
+
+#@app.route('/update/<int:contactId>', methods=['GET', 'POST'])
+# direct us to a page where we can edit the current (old) string
+#def edit_page(contactId):
+    #update_form = UpdateForm()
+    #if update_form.validate_on_submit():
+    	#name = Contact.query.filter_by(id=nameId).first()
+    	#name.name = update_form.update.data
+    	#email = Contact.query.filter_by(id=emailId).first()
+    	#email.email = update_form.update.data
+    	#db.session.commit()
+    	#return redirect(url_for('index'))
+    #name = Contact.query.filter_by(id=nameId).first()
+    #email = Contact.query.filter_by(id=emailId).first()
+    #return render_template('edit.html', update_form=update_form, contact = contacts.contacts)
+
