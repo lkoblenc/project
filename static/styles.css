@@ -69,3 +69,6 @@ h4 {
 .courses {
 	font-size: 16px;
 }
+.active {
+	background-color: #7dbcff;
+}
