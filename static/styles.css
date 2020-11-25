@@ -78,3 +78,17 @@ h4 {
 span {
 	background-color: white;
 }
+#submit {
+	background-color: #007bff !important;
+	color: white;
+	float: right;
+}
+#delete a:hover , #update a:hover {
+	text-decoration: none;
+}
+#delete a, #update a {
+	color: white;
+}
+#delete, #update {
+	margin: 5px;
+}

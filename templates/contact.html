@@ -31,7 +31,7 @@
 					<tr>
 						<td><h3>{{contact.name}}</h3></td>
 						<td><h3>{{contact.email}}</h3></td>
-						<td><h3><button><a href="{{update_url}}">Update</a></button><button> <a href='{{delete_url}}'>Delete</a></button></h3></td>
+						<td><button id="update" class="btn btn-info" ><a href="{{update_url}}">Update</a></button><button id="delete" class="btn btn-danger"> <a  href='{{delete_url}}'>Delete</a></button></td>
 						<!-- if user signed in, they can also edit and delete their contact info -->
 						{% if condition == True %}
 							<td><a href="">Edit Contact Information</a></td>
