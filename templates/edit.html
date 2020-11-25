@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block page_content %}
+<div class="container">
+
+<h1>The existing record is:</h1> 
+<h2>{{contact.name}}</h2>
+<br>
+<h2>{{contact.email}}</h2>
+
+
+{{ wtf.quick_form(update_form) }}
+
+
+
+
+</div>
+{% endblock %}

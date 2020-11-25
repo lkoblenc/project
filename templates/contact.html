@@ -26,9 +26,12 @@
 						<th></th>
 					</tr>
 					{% for contact in contacts %}
+					{% set update_url= url_for('edit_page', contactId=contact.id)%}
+					{% set delete_url= url_for('delete', contactId=contact.id)%}
 					<tr>
 						<td><h3>{{contact.name}}</h3></td>
 						<td><h3>{{contact.email}}</h3></td>
+						<td><h3><button><a href="{{update_url}}">Update</a></button><button> <a href='{{delete_url}}'>Delete</a></button></h3></td>
 						<!-- if user signed in, they can also edit and delete their contact info -->
 						{% if condition == True %}
 							<td><a href="">Edit Contact Information</a></td>

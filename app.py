@@ -70,27 +70,23 @@ def contact():
 		form.email.data = ''
 	return render_template('contact.html', form = form, contacts = contacts)
 
-#@app.route('/delete/<int:contactId>', methods=['GET', 'POST'])
-#def delete(contactId):
-	#name = Contact.query.filter_by(id=nameId).first()
-	#email = Contact.query.filter_by(id=emailId).first()
-    #db.session.delete(name)
-    #db.session.delete(email)
-    #db.session.commit()
-    #return redirect(url_for('index'))
+@app.route('/delete/<int:contactId>', methods=['GET', 'POST'])
+def delete(contactId):
+	contact = Contact.query.filter_by(id=contactId).first()
+	db.session.delete(contact)
+	db.session.commit()
+	return redirect(url_for('contact'))
 
-#@app.route('/update/<int:contactId>', methods=['GET', 'POST'])
+@app.route('/update/<int:contactId>', methods=['GET', 'POST'])
 # direct us to a page where we can edit the current (old) string
-#def edit_page(contactId):
-    #update_form = UpdateForm()
-    #if update_form.validate_on_submit():
-    	#name = Contact.query.filter_by(id=nameId).first()
-    	#name.name = update_form.update.data
-    	#email = Contact.query.filter_by(id=emailId).first()
-    	#email.email = update_form.update.data
-    	#db.session.commit()
-    	#return redirect(url_for('index'))
-    #name = Contact.query.filter_by(id=nameId).first()
-    #email = Contact.query.filter_by(id=emailId).first()
-    #return render_template('edit.html', update_form=update_form, contact = contacts.contacts)
+def edit_page(contactId):
+    update_form = UpdateForm()
+    if update_form.validate_on_submit():
+    	contact = Contact.query.filter_by(id=contactId).first()
+    	contact.name = update_form.name.data
+    	contact.email = update_form.email.data
+    	db.session.commit()
+    	return redirect(url_for('contact'))
+    contact = Contact.query.filter_by(id=contactId).first()
+    return render_template('edit.html', update_form=update_form, contact = contact)
 
