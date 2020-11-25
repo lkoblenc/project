@@ -23,6 +23,7 @@ body {
 .bg-layout {
 	background-color: white;
 	/*border-radius: 10px;*/
+	padding: 7px;
 }
 .degrees ul, .courses ul {
 	list-style-type: none;
