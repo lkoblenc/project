@@ -93,3 +93,15 @@ span {
 #delete, #update {
 	margin: 5px;
 }
+.welcome {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+.welcome div {
+	background-color: #bfdeff/*#7dbcff*/;
+	/*color: white;*/
+	padding: 10px;
+	text-align: center;
+	border-radius: 7px;
+}
