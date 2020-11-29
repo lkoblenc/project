@@ -13,6 +13,7 @@ app = Flask(__name__)
 application = app
 app.config['SECRET_KEY'] = 'thingxThingYthingZ'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contact.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
 
 moment = Moment(app)
 bootstrap = Bootstrap(app)
@@ -31,6 +32,9 @@ class User(db.Model):
 	password = db.Column(db.String(200), nullable=False, unique=False)
 
 if not os.path.exists('contact.db'):
+	db.create_all()
+
+if not os.path.exists('user.db'):
 	db.create_all()
 
 class ContactForm(FlaskForm):
