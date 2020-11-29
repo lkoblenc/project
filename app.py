@@ -1,9 +1,9 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, session
 from flask_bootstrap import Bootstrap 
 from flask_moment import Moment
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired, Email
+from wtforms import StringField, SubmitField, PasswordField
+from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms.fields.html5 import EmailField
 import os
 from flask_sqlalchemy import SQLAlchemy
@@ -25,6 +25,14 @@ class Contact(db.Model):
 	name = db.Column(db.String(200), nullable=False, unique=False)
 	email = db.Column(db.String(200), nullable=False, unique=True)
 
+class User(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	username = db.Column(db.String(200), nullable=False, unique=True)
+	password = db.Column(db.String(200), nullable=False, unique=False)
+
+if not os.path.exists('contact.db'):
+	db.create_all()
+
 class ContactForm(FlaskForm):
 	name = StringField('Enter your name', validators=[DataRequired()])
 	email = EmailField('Email address', [DataRequired(), Email()])
@@ -34,6 +42,17 @@ class UpdateForm(FlaskForm):
     name = StringField('Edit the name', validators=[DataRequired()])
     email = EmailField('Email address', [DataRequired(), Email()])
     submit = SubmitField('Submit')
+
+class CreateForm(FlaskForm):
+	username = StringField('Enter a username', validators=[DataRequired()])
+	password = PasswordField('Email a password', [DataRequired(), EqualTo('confirm', message='Passwords must match')])
+	confirm = PasswordField('Repeat Password')
+	submit = SubmitField('Submit')
+
+class SigninForm(FlaskForm):
+	username = StringField('Enter your username', validators=[DataRequired()])
+	password = PasswordField('Email your password', [DataRequired()])
+	submit = SubmitField('Submit')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
