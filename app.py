@@ -60,7 +60,9 @@ class SigninForm(FlaskForm):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+	if 'authenticated' not in session or session['authenticated'] == False:
+		session['authenticated'] = False
+	return render_template('index.html')
 
 @app.route('/leo', methods=['GET', 'POST'])
 def leo():
@@ -73,6 +75,33 @@ def jack():
 @app.route('/jaafar', methods=['GET', 'POST'])
 def jaafar():
     return render_template('jaafar.html')
+
+@app.route('/create', methods=['GET','POST'])
+def create():
+	form = CreateForm()
+	if form.validate_on_submit():
+		user = User(username = form.username.data, password = form.password.data)
+		db.session.add(user)
+		db.session.commit()
+		return redirect(url_for('index'))
+	return render_template('create.html', create_form = form)
+
+@app.route('/signin', methods=['GET','POST'])
+def signin():
+	form = SigninForm()
+	if form.validate_on_submit():
+		check_user = User().query.filter_by(username = form.username.data).first()
+		if check_user is not None and check_user.password == form.password.data:
+			session['authenticated'] = True
+			return redirect(url_for('contact'))
+		else:
+			pass
+	return render_template('signin.html', signin_form=form)
+
+@app.route('/signout', methods=['GET'])
+def signout():
+	session['authenticated'] = False
+	return redirect(url_for('index'))
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
