@@ -1,12 +1,16 @@
 alembic==1.4.3
 click==7.1.2
+dnspython==2.0.0
 dominate==2.6.0
+email-validator==1.1.2
 Flask==1.1.2
 Flask-Bootstrap==3.3.7.1
 Flask-Migrate==2.5.3
 Flask-Moment==0.10.0
 Flask-SQLAlchemy==2.4.4
 Flask-WTF==0.14.3
+idna==2.10
+is-disposable-email==1.0.0
 itsdangerous==1.1.0
 Jinja2==2.11.2
 Mako==1.1.3
@@ -18,4 +22,4 @@ SQLAlchemy==1.3.20
 visitor==0.1.3
 Werkzeug==1.0.1
 WTForms==2.3.3
-email_validator
+wtforms-validators==1.0.0

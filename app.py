@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, session
+from flask import Flask, render_template, redirect, url_for, session, flash
 from flask_bootstrap import Bootstrap 
 from flask_moment import Moment
 from flask_wtf import FlaskForm
@@ -12,8 +12,7 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 application = app
 app.config['SECRET_KEY'] = 'thingxThingYthingZ'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///contact.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 moment = Moment(app)
 bootstrap = Bootstrap(app)
@@ -31,10 +30,7 @@ class User(db.Model):
 	username = db.Column(db.String(200), nullable=False, unique=True)
 	password = db.Column(db.String(200), nullable=False, unique=False)
 
-if not os.path.exists('contact.db'):
-	db.create_all()
-
-if not os.path.exists('user.db'):
+if not os.path.exists('database.db'):
 	db.create_all()
 
 class ContactForm(FlaskForm):
@@ -49,7 +45,7 @@ class UpdateForm(FlaskForm):
 
 class CreateForm(FlaskForm):
 	username = StringField('Enter a username', validators=[DataRequired()])
-	password = PasswordField('Email a password', [DataRequired(), EqualTo('confirm', message='Passwords must match')])
+	password = PasswordField('Enter a password', [DataRequired(), EqualTo('confirm', message='Passwords must match')])
 	confirm = PasswordField('Repeat Password')
 	submit = SubmitField('Submit')
 
@@ -80,23 +76,34 @@ def jaafar():
 def create():
 	form = CreateForm()
 	if form.validate_on_submit():
+		error = None
 		user = User(username = form.username.data, password = form.password.data)
+		check_user = User().query.filter_by(username = form.username.data).first()
+		if check_user is not None:
+			error = 'Account Already Exists!'
+			return render_template('create.html', create_form = form, authenticated=session['authenticated'], error=error)
 		db.session.add(user)
 		db.session.commit()
 		return redirect(url_for('index'))
-	return render_template('create.html', create_form = form)
+	return render_template('create.html', create_form = form, authenticated=session['authenticated'])
 
 @app.route('/signin', methods=['GET','POST'])
 def signin():
 	form = SigninForm()
+	error = None
 	if form.validate_on_submit():
 		check_user = User().query.filter_by(username = form.username.data).first()
 		if check_user is not None and check_user.password == form.password.data:
 			session['authenticated'] = True
 			return redirect(url_for('contact'))
+		elif check_user is None:
+			error = 'Username Does Not Exist!'
+			return render_template('signin.html', signin_form=form, authenticated=session['authenticated'], error=error)
+
 		else:
-			pass
-	return render_template('signin.html', signin_form=form)
+			error = 'Password Incorrect!'
+			return render_template('signin.html', signin_form=form, authenticated=session['authenticated'], error=error)
+	return render_template('signin.html', signin_form=form, authenticated=session['authenticated'])
 
 @app.route('/signout', methods=['GET'])
 def signout():
@@ -108,6 +115,7 @@ def contact():
 	contact = Contact.query.all()
 	form = ContactForm()
 	contacts = Contact().query.all()
+	error = None
 	if form.validate_on_submit():
 		inputtedname = form.name.data
 		inputtedemail = form.email.data
@@ -116,29 +124,36 @@ def contact():
 			db.session.add(new_contact)
 			db.session.commit()
 		else:
-			print("Email already exists")
+			error = 'Email Already Exists!'
+			return render_template('contact.html', form = form, contacts = contacts, authenticated=session['authenticated'], error=error)
 		contacts = Contact().query.all()
 		form.name.data = ''
 		form.email.data = ''
-	return render_template('contact.html', form = form, contacts = contacts)
+	return render_template('contact.html', form = form, contacts = contacts, authenticated=session['authenticated'])
 
 @app.route('/delete/<int:contactId>', methods=['GET', 'POST'])
 def delete(contactId):
-	contact = Contact.query.filter_by(id=contactId).first()
-	db.session.delete(contact)
-	db.session.commit()
-	return redirect(url_for('contact'))
+	if session['authenticated'] == True:
+		contact = Contact.query.filter_by(id=contactId).first()
+		db.session.delete(contact)
+		db.session.commit()
+		return redirect(url_for('contact'))
+	else:
+		return redirect(url_for('contact'))
 
 @app.route('/update/<int:contactId>', methods=['GET', 'POST'])
 # direct us to a page where we can edit the current (old) string
 def edit_page(contactId):
     update_form = UpdateForm()
-    if update_form.validate_on_submit():
+    if session['authenticated'] == True:
+    	if update_form.validate_on_submit():
+    		contact = Contact.query.filter_by(id=contactId).first()
+    		contact.name = update_form.name.data
+    		contact.email = update_form.email.data
+    		db.session.commit()
+    		return redirect(url_for('contact'))
     	contact = Contact.query.filter_by(id=contactId).first()
-    	contact.name = update_form.name.data
-    	contact.email = update_form.email.data
-    	db.session.commit()
+    	return render_template('edit.html', update_form=update_form, contact = contact, authenticated=session['authenticated'])
+    else:
     	return redirect(url_for('contact'))
-    contact = Contact.query.filter_by(id=contactId).first()
-    return render_template('edit.html', update_form=update_form, contact = contact)
 

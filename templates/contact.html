@@ -9,12 +9,15 @@
 	<main class="container">
 		<div class="row display-flex">
 			<div class ="bg-layout col-lg-12 col-md-12 col-xs-12">
+				{% if error %}
+    			<p class=error><strong>Error:</strong> {{ error }}
+ 				 {% endif %}
 					<h1> Contact List </h1>
 					<!-- if user user signed in, they will be greeted with a message-->
 					{% if condition == True %}
 						<p>Hello {{contact.name}}! Find your information in the list below to edit or delete it.</p>
 					{% else %} <!-- if not signed in, a different message -->
-						<p><a href = "">Sign up</a> to add your contact information to our list, or <a href = "">sign in</a> to edit or delete your already created information.</p>
+						<p><a href ="{{url_for('create')}}">Sign up</a> to add your contact information to our list, or <a href ="{{url_for('signin')}}">sign in</a> to edit or delete your already created information.</p>
 					{% endif %}
 			</div>
 			<div class ="bg-layout col-lg-12 col-md-12 col-xs-12 ">

@@ -2,6 +2,15 @@
 
 {% block title %} CSC 210 - Project {% endblock %}
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
 
 {% block head %}
@@ -21,7 +30,9 @@
     ('/jack', 'jack', 'Jack'),
     ('/jaafar', 'jaafar', 'Jaafar'),
     ('/leo', 'leo', 'Leo'),
-    ('/contact', 'contact', 'Contact')
+    ('/contact', 'contact', 'Contact Page'),
+    ('/create', 'create', 'Create Account'),
+    ('/signin', 'signin', 'Sign In')
 ] -%}
 {% set active_page = active_page|default('index') -%}
 
@@ -39,8 +50,11 @@
             <ul id="navigation" class=" nav navbar-nav">
                 {% for href, id, caption in navigation_bar %}
 				  <li{% if id == active_page %} class="active"{% endif
-				  %}><a href="{{ href|e }}">{{ caption|e }}</a></li>
+				  %}><a href="{{ url_for(id) }}">{{ caption|e }}</a></li>
 				{% endfor %}
+                {% if authenticated %}
+                <li><a href="{{ url_for('signout')}}">Sign Out</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
