@@ -25,25 +25,14 @@
 {% block navbar %}
 
 <!-- Source code for the menu highlighter using jinja can be found here https://jinja.palletsprojects.com/en/2.11.x/tricks/ -->
-{% if authenticated %}
-    {% set navigation_bar = [
-    	('/', 'index', 'Home'),
-        ('/leo', 'leo', 'Leo'),
-        ('/jack', 'jack', 'Jack'),
-        ('/jaafar', 'jaafar', 'Jaafar'),
-        ('/contact', 'contact', 'Contact Page'),
-         
-    ] -%}
-{% else %}
-    {% set navigation_bar = [
-        ('/', 'index', 'Home'),
-        ('/leo', 'leo', 'Leo'),
-        ('/jack', 'jack', 'Jack'),
-        ('/jaafar', 'jaafar', 'Jaafar'),
-        ('/contact', 'contact', 'Contact Page'),
-       
-    ] -%}
-{% endif %}
+{% set navigation_bar = [
+	('/', 'index', 'Home'),
+    ('/leo', 'leo', 'Leo'),
+    ('/jack', 'jack', 'Jack'),
+    ('/jaafar', 'jaafar', 'Jaafar'),
+    ('/contact', 'contact', 'Contact Page'),
+     
+] -%}
 {% set active_page = active_page|default('index') -%}
 
 <nav class="navbar navbar-expand-lg">
