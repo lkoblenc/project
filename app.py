@@ -53,7 +53,7 @@ class CreateForm(FlaskForm):
 
 class SigninForm(FlaskForm):
 	username = StringField('Enter your username', validators=[DataRequired()])
-	password = PasswordField('Email your password', [DataRequired()])
+	password = PasswordField('Enter your password', [DataRequired()])
 	submit = SubmitField('Submit')
 
 @app.route('/', methods=['GET', 'POST'])
