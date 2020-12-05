@@ -61,19 +61,19 @@ def index():
 	if 'authenticated' not in session or session['authenticated'] == False:
 		session['authenticated'] = False
 		session['username'] = '-'
-	return render_template('index.html')
+	return render_template('index.html', authenticated=session['authenticated'])
 
 @app.route('/leo', methods=['GET', 'POST'])
 def leo():
-    return render_template('leo.html')
+    return render_template('leo.html', authenticated=session['authenticated'])
 
 @app.route('/jack', methods=['GET', 'POST'])
 def jack():
-    return render_template('jack.html')
+    return render_template('jack.html', authenticated=session['authenticated'])
 
 @app.route('/jaafar', methods=['GET', 'POST'])
 def jaafar():
-    return render_template('jaafar.html')
+    return render_template('jaafar.html', authenticated=session['authenticated'])
 
 @app.route('/create', methods=['GET','POST'])
 def create():
