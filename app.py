@@ -87,7 +87,9 @@ def create():
 			return render_template('create.html', create_form = form, authenticated=session['authenticated'], error=error)
 		db.session.add(user)
 		db.session.commit()
-		return redirect(url_for('index'))
+		session['authenticated'] = True
+		session['username'] = form.username.data
+		return redirect(url_for('contact'))
 	return render_template('create.html', create_form = form, authenticated=session['authenticated'])
 
 @app.route('/signin', methods=['GET','POST'])
