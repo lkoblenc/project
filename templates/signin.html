@@ -3,10 +3,12 @@
 
 {% block page_content %}
 <div class="container">
-				{% if error %}
-    			<p class=error><strong>Error:</strong> {{ error }}
- 				{% endif %}
-<h1>Sign In!</h1>
-  {{ wtf.quick_form(signin_form) }}
+	<div class="bg-layout thin">
+		{% if error %}
+		<p class=error><strong>Error:</strong> {{ error }} </p>
+			{% endif %}
+		<h1>Sign In!</h1>
+	  	{{ wtf.quick_form(signin_form) }}
+	</div>
 </div>
 {% endblock %}

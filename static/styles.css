@@ -134,3 +134,7 @@ span {
  .nav .btn.btn-dark a {
  	color: white ;
  }
+ .thin {
+ 	width: 50%;
+ 	margin: auto;
+ }
