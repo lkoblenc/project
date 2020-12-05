@@ -14,8 +14,8 @@
  				 {% endif %}
 					<h1> Contact List </h1>
 					<!-- if user user signed in, they will be greeted with a message-->
-					{% if condition == True %}
-						<p>Hello {{contact.name}}! Find your information in the list below to edit or delete it.</p>
+					{% if authenticated %}
+						<p>Hello {{username}}! Find your information in the list below to edit or delete it.</p>
 					{% else %} <!-- if not signed in, a different message -->
 						<p><a href ="{{url_for('create')}}">Sign up</a> to add your contact information to our list, or <a href ="{{url_for('signin')}}">sign in</a> to edit or delete your already created information.</p>
 					{% endif %}
@@ -34,7 +34,13 @@
 					<tr>
 						<td><h3>{{contact.name}}</h3></td>
 						<td><h3>{{contact.email}}</h3></td>
-						<td><a href="{{update_url}}"><button id="update" class="btn btn-info" >Update </button> </a> <a href='{{delete_url}}'> <button id="delete" class="btn btn-danger"> Delete </button></a></td>
+
+
+						{% if authenticated %}
+							{% if username == contact.username %}
+								<td><a href="{{update_url}}"><button id="update" class="btn btn-info" >Update </button> </a> <a href='{{delete_url}}'> <button id="delete" class="btn btn-danger"> Delete </button></a></td>
+							{% endif %}
+						{% endif %}
 						<!-- if user signed in, they can also edit and delete their contact info -->
 						{% if condition == True %}
 							<td><a href="">Edit Contact Information</a></td>
@@ -44,7 +50,9 @@
 					</tr>
 					{% endfor %}
 				</table>
-				{{ wtf.quick_form(form) }}
+				{% if authenticated %}
+					{{ wtf.quick_form(form) }}
+				{% endif %}
 			</div>
 		</div>
 	</main>

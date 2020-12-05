@@ -24,6 +24,8 @@ class Contact(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(200), nullable=False, unique=False)
 	email = db.Column(db.String(200), nullable=False, unique=True)
+	username = db.Column(db.String(200), nullable=False, unique=False)
+	#username is used to record the user creating the contact (one to many)
 
 class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -58,6 +60,7 @@ class SigninForm(FlaskForm):
 def index():
 	if 'authenticated' not in session or session['authenticated'] == False:
 		session['authenticated'] = False
+		session['username'] = '-'
 	return render_template('index.html')
 
 @app.route('/leo', methods=['GET', 'POST'])
@@ -95,6 +98,7 @@ def signin():
 		check_user = User().query.filter_by(username = form.username.data).first()
 		if check_user is not None and check_user.password == form.password.data:
 			session['authenticated'] = True
+			session['username'] = form.username.data
 			return redirect(url_for('contact'))
 		elif check_user is None:
 			error = 'Username Does Not Exist!'
@@ -108,6 +112,7 @@ def signin():
 @app.route('/signout', methods=['GET'])
 def signout():
 	session['authenticated'] = False
+	session['username'] = '-'
 	return redirect(url_for('index'))
 
 @app.route('/contact', methods=['GET', 'POST'])
@@ -119,17 +124,17 @@ def contact():
 	if form.validate_on_submit():
 		inputtedname = form.name.data
 		inputtedemail = form.email.data
-		new_contact = Contact(name = inputtedname, email = inputtedemail)
+		new_contact = Contact(name = inputtedname, email = inputtedemail, username = session['username'])
 		if len(Contact().query.filter(Contact.email==inputtedemail).all()) == 0:
 			db.session.add(new_contact)
 			db.session.commit()
 		else:
 			error = 'Email Already Exists!'
-			return render_template('contact.html', form = form, contacts = contacts, authenticated=session['authenticated'], error=error)
+			return render_template('contact.html', form = form, contacts = contacts, authenticated=session['authenticated'], username=session['username'], error=error)
 		contacts = Contact().query.all()
 		form.name.data = ''
 		form.email.data = ''
-	return render_template('contact.html', form = form, contacts = contacts, authenticated=session['authenticated'])
+	return render_template('contact.html', form = form, contacts = contacts, authenticated=session['authenticated'], username=session['username'])
 
 @app.route('/delete/<int:contactId>', methods=['GET', 'POST'])
 def delete(contactId):
