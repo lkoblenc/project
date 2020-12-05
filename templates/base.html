@@ -32,7 +32,7 @@
         ('/jack', 'jack', 'Jack'),
         ('/jaafar', 'jaafar', 'Jaafar'),
         ('/contact', 'contact', 'Contact Page'),
-        ('/signout', 'signout', 'Sign Out')
+         
     ] -%}
 {% else %}
     {% set navigation_bar = [
@@ -41,8 +41,7 @@
         ('/jack', 'jack', 'Jack'),
         ('/jaafar', 'jaafar', 'Jaafar'),
         ('/contact', 'contact', 'Contact Page'),
-        ('/create', 'create', 'Create Account'),
-        ('/signin', 'signin', 'Sign In')
+       
     ] -%}
 {% endif %}
 {% set active_page = active_page|default('index') -%}
@@ -60,9 +59,16 @@
         <div class="navbar-collapse collapse" >
             <ul id="navigation" class=" nav navbar-nav">
                 {% for href, id, caption in navigation_bar %}
-				  <li{% if id == active_page %} class="active"{% endif
+				  <li {% if id == active_page %} class="active"{% endif
 				  %}><a href="{{ url_for(id) }}">{{ caption|e }}</a></li>
 				{% endfor %}
+			    {% if authenticated %}
+			     	<li class="nav-b"> <button type="button" class="btn btn-danger navbar-btn"><a href="{{url_for('signout')}}">  Signout  </a> </button> </li>
+				{% else %}
+					<li class="nav-b"> <button type="button" class="btn btn-info navbar-btn"> <a href="{{url_for('create')}}">  Create  </a> </button> </li>
+					<li class="nav-b"> <button type="button" class="btn btn-dark navbar-btn"><a href="{{url_for('signin')}}">  Signin  </a> </button> </li>
+
+				{% endif %}
             </ul>
         </div>
     </div>

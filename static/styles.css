@@ -5,7 +5,7 @@
   background-image: none !important;
 }
 .nav.navbar-nav li a, .navbar-brand {
-   color: white !important;
+   color: white /*!important*/;
 
  }
  .nav.navbar-nav li:nth-of-type(1) a {
@@ -83,7 +83,7 @@ span {
 	color: white;
 	float: right;
 }
-#delete a:hover , #update a:hover {
+#delete a:hover , #update a:hover,  {
 	text-decoration: none;
 }
 #delete a, #update a {
@@ -105,3 +105,32 @@ span {
 	text-align: center;
 	border-radius: 7px;
 }
+.nav-b button a:hover {
+	text-decoration: none;
+	color: white !important;
+}
+.nav-b button {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+/* .nav.navbar-nav .nav-b button a:nth-of-type(1) {
+   color: #343a40 !important;
+
+ }
+  .nav.navbar-nav .nav-b button a:nth-of-type(2) {
+   color: white !important;
+   background-color:  #6c757d !important;
+ }*/
+
+ .nav .btn.btn-info{
+ 	background-color: white;
+ }
+ .nav .btn.btn-info a {
+ 	color: #007bff;
+ }
+ .nav .btn.btn-dark{
+ 	background-color: #a0a6ab;
+ }
+ .nav .btn.btn-dark a {
+ 	color: white ;
+ }
