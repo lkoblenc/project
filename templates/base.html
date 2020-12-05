@@ -28,18 +28,18 @@
 {% if authenticated %}
     {% set navigation_bar = [
     	('/', 'index', 'Home'),
+        ('/leo', 'leo', 'Leo'),
         ('/jack', 'jack', 'Jack'),
         ('/jaafar', 'jaafar', 'Jaafar'),
-        ('/leo', 'leo', 'Leo'),
         ('/contact', 'contact', 'Contact Page'),
         ('/signout', 'signout', 'Sign Out')
     ] -%}
 {% else %}
     {% set navigation_bar = [
         ('/', 'index', 'Home'),
+        ('/leo', 'leo', 'Leo'),
         ('/jack', 'jack', 'Jack'),
         ('/jaafar', 'jaafar', 'Jaafar'),
-        ('/leo', 'leo', 'Leo'),
         ('/contact', 'contact', 'Contact Page'),
         ('/create', 'create', 'Create Account'),
         ('/signin', 'signin', 'Sign In')
