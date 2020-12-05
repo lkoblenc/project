@@ -15,7 +15,7 @@
 					<h1> Contact List </h1>
 					<!-- if user user signed in, they will be greeted with a message-->
 					{% if authenticated %}
-						<p>Hello {{username}}! Find your information in the list below to edit or delete it.</p>
+						<p>Hello {{username}}! If you already added your information, find it in the list to edit or delete it, otherwise, add your info in the form below.</p>
 					{% else %} <!-- if not signed in, a different message -->
 						<p><a href ="{{url_for('create')}}">Sign up</a> to add your contact information to our list, or <a href ="{{url_for('signin')}}">sign in</a> to edit or delete your already created information.</p>
 					{% endif %}
@@ -51,6 +51,7 @@
 					{% endfor %}
 				</table>
 				{% if authenticated %}
+					<h2>Add your contact information!</h2>
 					{{ wtf.quick_form(form) }}
 				{% endif %}
 			</div>
