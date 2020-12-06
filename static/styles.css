@@ -134,8 +134,17 @@ span {
  .nav .btn.btn-dark a {
  	color: white ;
  }
- .thin {
- 	display: flex;
- 	align-items: center;
-    justify-content: center;
+.thin {
+	background-color: white;
+	   position: fixed;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  border: 1px solid black;
+	  padding-bottom: 5px;
+	  width: 30%;
+	  min-width: 300px;
+ }
+ .thin h1 {
+ 	text-align: center;
  }
