@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% set active_page = "jack" %}
+
+{% block content %}
+<body>
+<div class="bg-light"> 
+	<main class="container">
+		<div class="row display-flex">
+			<div class="bg-layout col-lg-12 col-md-12 col-xs-12">
+					<header class="row">
+						<!-- This Carousel is from W3Schools. It takes advantage of bootstrap's carousel functionality which allows the user to create simple slideshows by applying bootstrap classes, as well as using a little bit of javascript on bootstrap's end.  https://www.w3schools.com/bootstrap/bootstrap_carousel.asp -->
+						<div id="myCarousel" class="carousel slide col-xs-5 col-md-3 col-lg-3" data-ride="carousel">
+							  <!-- Indicators -->
+							  <ol class="carousel-indicators">
+							    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							    <li data-target="#myCarousel" data-slide-to="1"></li>
+							    <li data-target="#myCarousel" data-slide-to="2"></li>
+							  </ol>
+
+							  <!-- Wrapper for slides -->
+							  <div class="carousel-inner">
+							    <div class="item active">
+							      <img src="{{url_for('static',filename='images/jack1.jpg')}}" alt="jack1" style="width:100%;">
+							    </div>
+
+							    <div class="item">
+							      <img src="{{url_for('static',filename='images/jack2.jpg')}}" alt="jack2" style="width:100%;">
+							    </div>
+
+							    <div class="item">
+							      <img src="{{url_for('static',filename='images/jack3.jpg')}}" alt="jack3" style="width:100%;">
+							    </div>
+							  </div>
+
+						</div>
+						<div class='col-xs-7 col-md-9 col-lg-9'>
+							<h1> Jack Mandell </h1>
+							<h2 class="title"> Math and Computer Science Student at the University of Rochester </h2>
+						</div>	
+						
+					</header>	
+			</div>
+			<div class="bg-layout col-lg-4 col-md-6 col-xs-12">
+					<h2> Degrees </h2>
+				
+					<section class="degrees">
+						<ul>
+							<li class="li-layout row"> 
+								<img src="{{url_for('static',filename='images/ur.png')}}" class="col-lg-2 col-md-2 col-xs-2">
+								<ul class="col-lg-10 col-md-10 col-xs-10"> 
+									<li> University of Rochester </li>
+									<li> Bachelor of Science - BS, Mathematics </li>
+									<li> 2019 - 2023 </li>
+							 	</ul>
+							</li>
+							<li class="li-layout row">
+								 <img src="{{url_for('static',filename='images/ur.png')}}" class="col-lg-2 col-md-2 col-xs-2">
+								 <ul class="col-lg-10 col-md-10 col-xs-10">  
+								 	<li> University of Rochester </li>
+								 	<li> Bachelor of Arts - BA, Computer Science </li>
+								 	<li> 2019 - 2023 </li>
+								 </ul>
+							</li>
+						</ul>
+					
+					</section>
+			</div>	
+			<div class="bg-layout col-lg-4 col-md-6 col-xs-12">
+					<h2> Courses </h2>
+				
+					<section class="courses">
+						<p>Advanced Web Development  •  Data Structures & Algorithms  •
+							 Web Application Programming  •  Discrete Mathematics  •  Honors Calculus I-III  •  Intro to Probability 
+						</p>
+					</section>
+			</div>
+			<div class="bg-layout col-lg-4 col-md-12 col-xs-12">
+					<section class="experience">
+						<h2> Experience </h2>
+						<h3> Teaching Assistant for Honors Calculus I </h3>
+						<h3> Art Instructor  </h3>
+					</section>
+			</div>	
+
+			<div class="bg-layout col-lg-12 col-md-12 col-xs-12 ">	
+					<section class="projects">
+					<h2> Projects </h2>
+						<h3> Street Mapping of New York State </h3>
+						<p> Using Java, I created a graph data structure to represent the intersections and roads of New York State. After constructing the graph, the coordinates of the intersections were used to create a map that was displayed to the user. Dijkstra's Algorithm was implemented to find the shortest route from a given intersection to all other intersections, and Kruskal's Algorithm was implemented to find the minimum weight spanning tree given an intersection.  </p>
+
+						<h3> Connect Four Application  </h3>
+						<p>  I used Java, JavaFX, and Scene Builder to design the classic game of connect four. Two players take turns placing tokens into columns. The application also allows the users to change the dimensions of the playing board, as well as the minimum amount of tokens in a row it takes to win a game.  </p>
+
+						<h3> </h3>
+						<p> </p>
+
+						<h3> Website with custom content management system.  </h3>
+						<p> The website was a collection of student's about-me pages utilizing MySQL, HTML, PHP, CSS.  The website had a custom content management system (CMS) and login interface, and the website allowed users with a valid username and password to create, edit, and delete student pages on the website.  </p>
+						
+					</section>
+			</div>
+		</div>
+	</main>
+</div>
+</body>
+ 
+
+{% endblock %}
