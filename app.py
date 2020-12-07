@@ -48,7 +48,7 @@ class UpdateForm(FlaskForm):
 class CreateForm(FlaskForm):
 	username = StringField('Enter a username', validators=[DataRequired()])
 	password = PasswordField('Enter a password', [DataRequired(), EqualTo('confirm', message='Passwords must match')])
-	confirm = PasswordField('Repeat Password')
+	confirm = PasswordField('Repeat password')
 	submit = SubmitField('Submit')
 
 class SigninForm(FlaskForm):
