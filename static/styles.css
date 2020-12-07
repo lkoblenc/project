@@ -1,3 +1,5 @@
+/* Navigation Styling */
+
 .navbar, .navbar-expand-lg {
   background-color: #007bff;
   color: white;
@@ -7,8 +9,8 @@
 .nav.navbar-nav li a, .navbar-brand {
    color: white /*!important*/;
 
- }
- .nav.navbar-nav li:nth-of-type(1) a {
+}
+.nav.navbar-nav li:nth-of-type(1) a {
    color: white !important;
    font-size: 18px;
  }
@@ -16,35 +18,50 @@
 .nav.navbar-nav a:hover {
  color: grey !important;
 }
+.nav-b button a:hover {
+	text-decoration: none;
+	color: white !important;
+}
+.nav-b button {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+ .nav .btn.btn-info{
+ 	background-color: white;
+ }
+ .nav .btn.btn-info a {
+ 	color: #007bff;
+ }
+ .nav .btn.btn-dark{
+ 	background-color: #a0a6ab;
+ }
+ .nav .btn.btn-dark a {
+ 	color: white ;
+ }
+/* Menu Highlighter styling */
+.active {
+	background-color: #7dbcff;
+}
+
+/*General website styling */
+
 body {
 	background-color: #dbdbdb;
 }
 
 .bg-layout {
 	background-color: white;
-	/*border-radius: 10px;*/
 	padding: 7px;
 }
 .degrees ul, .courses ul {
 	list-style-type: none;
 }
-/*.li-layout {
-	display: flex;
-}*/
+
 .degrees ul ul li:nth-of-type(1) {
 	font-weight: bold;
 }
-/*.courses ul {
-	display: flex;
-	flex-wrap: wrap;
-	padding-left: 0px;
-}
-.courses ul li {
-	padding-left: 10px;
-	padding-right: 10px;
-	border-right: 1px solid #535353;
 
-}*/
 h1 {
 	font-size: 32px;
 }
@@ -57,6 +74,9 @@ h3 {
 h4 {
 	font-size: 20px;
 }
+
+/*Grid Layout Styling */
+
 .row.display-flex {
   display: flex;
   flex-wrap: wrap;
@@ -69,15 +89,17 @@ h4 {
     margin-bottom: 10px;
     margin-top: 10px;
 }
+
 .courses {
 	font-size: 16px;
 }
-.active {
-	background-color: #7dbcff;
-}
+
 span {
 	background-color: white;
 }
+
+/* Button Styling for Contact list */
+
 #submit {
 	background-color: #007bff !important;
 	color: white;
@@ -98,6 +120,9 @@ span {
 	align-items: center;
     justify-content: center;
 }
+
+/*Homepage welcome styling*/
+
 .welcome div {
 	background-color: #bfdeff/*#7dbcff*/;
 	/*color: white;*/
@@ -105,35 +130,9 @@ span {
 	text-align: center;
 	border-radius: 7px;
 }
-.nav-b button a:hover {
-	text-decoration: none;
-	color: white !important;
-}
-.nav-b button {
-	margin-left: 5px;
-	margin-right: 5px;
-}
-/* .nav.navbar-nav .nav-b button a:nth-of-type(1) {
-   color: #343a40 !important;
 
- }
-  .nav.navbar-nav .nav-b button a:nth-of-type(2) {
-   color: white !important;
-   background-color:  #6c757d !important;
- }*/
+/* Signin and Create page layout*/
 
- .nav .btn.btn-info{
- 	background-color: white;
- }
- .nav .btn.btn-info a {
- 	color: #007bff;
- }
- .nav .btn.btn-dark{
- 	background-color: #a0a6ab;
- }
- .nav .btn.btn-dark a {
- 	color: white ;
- }
 .thin {
 	background-color: white;
 	position: fixed;
