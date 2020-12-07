@@ -8,7 +8,27 @@
 			<div class = "row display-flex">
 				<div class = "bg-layout col-lg-12 col-md-12 col-xs-12">
 						<header class="row">
-							<img src="{{url_for('static',filename='images/jaafar.jpg')}}" class='col-xs-3 col-md-3 col-lg-3'>
+
+							<div id="myCarousel" class="carousel slide col-xs-5 col-md-3 col-lg-3" data-ride="carousel">
+								<ol class="carousel-indicators">
+								    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+								    <li data-target="#myCarousel" data-slide-to="1"></li>
+								    <li data-target="#myCarousel" data-slide-to="2"></li>
+							  	</ol>
+							  	<div class="carousel-inner">
+								    <div class="item active">
+								      <img src="{{url_for('static',filename='images/jaafar.jpg')}}" alt="Jaafar1" style="width:100%;">
+								    </div>
+
+								    <div class="item">
+								      <img src="{{url_for('static',filename='images/jaafar2.jpg')}}" alt="Jaafar2" style="width:100%;">
+								    </div>
+
+								    <div class="item">
+								      <img src="{{url_for('static',filename='images/jaafar3.jpg')}}" alt="Jaafar3" style="width:100%;">
+								    </div>
+							  </div>
+							</div>
 							<div class='col-xs-9 col-md-9 col-lg-9'>
 								<h1> Jaafar Hadab </h1>
 								<h2 class="title"> Mechanical Engineering Student at the University of Rochester</h2>
