@@ -17,44 +17,46 @@
 					{% if authenticated %}
 						<p>Hello {{username}}! If you already added your information, find it in the list to edit or delete it, otherwise, add your info in the form below.</p>
 					{% else %} <!-- if not signed in, a different message -->
-						<p><a href ="{{url_for('create')}}">Sign up</a> to add your contact information to our list, or <a href ="{{url_for('signin')}}">sign in</a> to edit or delete your already created information.</p>
+						<p>To see our contact list, <a href ="{{url_for('create')}}">sign up</a> to add your contact information to our list, or <a href ="{{url_for('signin')}}">sign in</a> to edit or delete your already created information.</p>
 					{% endif %}
 			</div>
-			<div class ="bg-layout col-lg-12 col-md-12 col-xs-12 ">
-				<table>
-					<tr>
-						<th><h2>Contact Name</h2></th>
-						<th><h2>Email Address</h2></th>
-						<th></th>
-						<th></th>
-					</tr>
-					{% for contact in contacts %}
-					{% set update_url= url_for('edit_page', contactId=contact.id)%}
-					{% set delete_url= url_for('delete', contactId=contact.id)%}
-					<tr>
-						<td><h3>{{contact.name}}</h3></td>
-						<td><h3>{{contact.email}}</h3></td>
+			{% if authenticated %}
+				<div class ="bg-layout col-lg-12 col-md-12 col-xs-12 ">
+					<table>
+						<tr>
+							<th><h2>Contact Name</h2></th>
+							<th><h2>Email Address</h2></th>
+							<th></th>
+							<th></th>
+						</tr>
+						{% for contact in contacts %}
+						{% set update_url= url_for('edit_page', contactId=contact.id)%}
+						{% set delete_url= url_for('delete', contactId=contact.id)%}
+						<tr>
+							<td><h3>{{contact.name}}</h3></td>
+							<td><h3>{{contact.email}}</h3></td>
 
 
-						{% if authenticated %}
-							{% if username == contact.username %}
-								<td><a href="{{update_url}}"><button id="update" class="btn btn-info" >Update </button> </a> <a href='{{delete_url}}'> <button id="delete" class="btn btn-danger"> Delete </button></a></td>
+							{% if authenticated %}
+								{% if username == contact.username %}
+									<td><a href="{{update_url}}"><button id="update" class="btn btn-info" >Update </button> </a> <a href='{{delete_url}}'> <button id="delete" class="btn btn-danger"> Delete </button></a></td>
+								{% endif %}
 							{% endif %}
-						{% endif %}
-						<!-- if user signed in, they can also edit and delete their contact info -->
-						{% if condition == True %}
-							<td><a href="">Edit Contact Information</a></td>
-							<td><a href="">Delete Contact Information</a></td>
-						{% endif %}
+							<!-- if user signed in, they can also edit and delete their contact info -->
+							{% if condition == True %}
+								<td><a href="">Edit Contact Information</a></td>
+								<td><a href="">Delete Contact Information</a></td>
+							{% endif %}
 
-					</tr>
-					{% endfor %}
-				</table>
-				{% if authenticated %}
-					<h2>Add your contact information!</h2>
-					{{ wtf.quick_form(form) }}
-				{% endif %}
-			</div>
+						</tr>
+						{% endfor %}
+					</table>
+					{% if authenticated %}
+						<h2>Add your contact information!</h2>
+						{{ wtf.quick_form(form) }}
+					{% endif %}
+				</div>
+			{% endif %}
 		</div>
 	</main>
 </div>
